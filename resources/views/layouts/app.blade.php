@@ -20,9 +20,24 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                @if(Auth::user() && Auth::user()->role === 'bu')
+                    <a class="navbar-brand" href="{{ url('bu/busines-unit') }}">
+                        ITMS
+                    </a>
+                @elseif(Auth::user() && Auth::user()->role === 'manager')
+                    <a class="navbar-brand" href="{{ url('manager/dashboard') }}">
+                        ITMS
+                    </a>
+                @elseif(Auth::user() && Auth::user()->role === 'developer')
+                    <a class="navbar-brand" href="{{ url('developer/dashboard') }}">
+                        ITMS
+                    </a>
+                @else
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        ITMS
+                    </a>
+                @endif
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

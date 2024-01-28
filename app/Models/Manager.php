@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class System extends Model
+class Manager extends Model
 {
     use HasFactory;
+    public $timestamps=false;
 
     protected $fillable = [
         'name',
-        'version',
-        'system_platform',
-        'deployment_type',
-        'bu_id',
     ];
-
+    
 }

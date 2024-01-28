@@ -5,17 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\BusinessUnit;
 use Illuminate\Http\Request;
 use App\Models\Request as RequestModel;
+use App\Models\System;
 use Illuminate\Support\Facades\Auth;
 
 class BusinessUnitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        // $data = RequestModel::all();
-        // return view('adminPage', ['systems'=>$data]);
+        $user = auth()->user()?->user_id;
+        // echo "user: ", $user;
+        $data = System::where('bu_id', $user)->get();
+        return view('bu.dashboard', ['systems'=>$data]);
+    }
+
+    public function requests()
+    {
+        $user = auth()->user()?->user_id;
+        // echo "user: ", $user;
+        $data = RequestModel::where('bu_id', $user)->get();
+        return view('bu.displayRequests', ['requests'=>$data]);
     }
 
     /**
@@ -31,7 +40,7 @@ class BusinessUnitController extends Controller
      */
     public function store(Request $request)
     {
-        $user = auth()->user()->user_id;
+        $user = auth()->user()?->user_id;
 
         $bu = BusinessUnit::where('id', $user)->first();
 
@@ -39,14 +48,19 @@ class BusinessUnitController extends Controller
 
         $newRequest->system_name = $request->systemName;
         $newRequest->description = $request->systemDescription;
-        $newRequest->status = "New";
+        $newRequest->status = "pending";
+        $newRequest->type = "new";
         $newRequest->bu_id = $bu->id;
 
         $newRequest->save();
 
+        return response()->redirectTo('bu/busines-unit/requests');
+    }
 
-        // Optionally, you can return a response or redirect
-        return response()->json(['message' => 'Record created successfully', 'data' => $newRequest]);
+    public function enhancement($id)
+    {
+        $data = System::where('id', $id)->first();
+        return view('bu.requestEnhanceForm', ['system'=>$data, 'id'=>$id]);
     }
 
     public function storeEnhancement(Request $request)
@@ -59,17 +73,24 @@ class BusinessUnitController extends Controller
 
         $newRequest->system_name = $request->systemName;
         $newRequest->description = $request->systemDescription;
-        $newRequest->status = "enhancement";
+        $newRequest->status = "pending";
+        $newRequest->type = "enhancement";
         $newRequest->system_id = $request->enhance;
         $newRequest->bu_id = $bu->id;
 
         $newRequest->save();
 
-
-        // Optionally, you can return a response or redirect
-        return response()->json(['message' => 'Record created successfully', 'data' => $newRequest]);
+        return response()->redirectTo('bu/busines-unit/requests');
     }
 
+    
+    public function deleteRequest($id) 
+    {
+        $data = RequestModel::find($id);
+        $data->delete();
+
+        return redirect('bu/busines-unit/requests');
+    }
     /**
      * Display the specified resource.
      */
