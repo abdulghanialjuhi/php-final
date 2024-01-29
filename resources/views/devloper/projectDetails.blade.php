@@ -78,7 +78,7 @@
                                         <div class="col-md-6 fw-bolder text-start">{{$progress['date']}}</div>
                                     </div>
                                     <div class="row my-2">
-                                        <div class="col-md-6 text-start">Comment:</div>
+                                        <div class="col-md-6 text-start">Description:</div>
                                         <div class="col-md-6 fw-bolder text-start">{{$progress['comment']}}</div>
                                     </div>
                                     <div class="row my-2">

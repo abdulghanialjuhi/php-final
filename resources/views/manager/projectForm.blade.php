@@ -13,14 +13,14 @@
                         <div class="form-group mb-3">
                             <label for="systemName">Business Name</label>
                             <input required  value="{{$request->name}}" type="text" class="form-control" placeholder="Enter System Name" disabled>
-                             <?php echo $request->id ? '<input type="hidden" name="buId" value="' . $request->id . '" />' : 'none'; ?>
+                             <?php echo $request->id ? '<input type="hidden" name="buId" value="' . $request->bu_id . '" />' : 'none'; ?>
                              <?php echo $request->name ? '<input type="hidden" name="buName" value="' . $request->name . '" />' : 'none'; ?>
 
                         </div>
                         <div class="form-group mb-3">
                             <label for="systemDescription">System Name</label>
                             <input required type="text" class="form-control" name="systemName" 
-                            value="@if($request->type == 'enhancement') {{$request->system_name}} @endif">
+                            value="{{$request->system_name}}">
                         </div>
                         <div class="form-group mb-3">
                             <label for="systemDescription">Start Date</label>

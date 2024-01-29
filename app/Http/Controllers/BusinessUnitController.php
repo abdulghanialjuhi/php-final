@@ -27,17 +27,7 @@ class BusinessUnitController extends Controller
         return view('bu.displayRequests', ['requests'=>$data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $user = auth()->user()?->user_id;
@@ -91,35 +81,5 @@ class BusinessUnitController extends Controller
 
         return redirect('bu/busines-unit/requests');
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(BusinessUnit $businessUnit)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(BusinessUnit $businessUnit)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, BusinessUnit $businessUnit)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(BusinessUnit $businessUnit)
-    {
-        //
-    }
 }

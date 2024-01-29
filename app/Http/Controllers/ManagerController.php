@@ -57,8 +57,8 @@ class ManagerController extends Controller
 
         $data = RequestModel::where('id', $id)->first();
 
-        $bu_date = BusinessUnit::where('id', $data->bu_id)->first();
-        $data->name = $bu_date->name;
+        $bu_data = BusinessUnit::where('id', $data->bu_id)->first();
+        $data->name = $bu_data->name;
 
         $developers = Developer::all();
 
@@ -106,7 +106,7 @@ class ManagerController extends Controller
             'lead_dev' => $request->projectLeader,
             'system_pic' => $bu->id,
             'approved' => false,
-            'status' => "on progress",
+            'status' => "on schedule",
             'system_id' => $request->requestType === 'enhancement' ? $request->systemId : '',
 
         ]);
@@ -151,7 +151,6 @@ class ManagerController extends Controller
 
         }
 
-        $project->status = 'complete';
         $project->approved = true;
         $project->save();
 

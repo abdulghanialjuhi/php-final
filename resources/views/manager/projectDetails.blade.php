@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <a href="/manager/projects" class="btn btn-primary">Go back</a>
-                    <?php echo $project->status === 'complete' ? 
+                    <?php echo $project->status === 'completed' ? 
                     '<a href="/manager/close-project-request/'. $project->id.'" class="btn btn-primary">Approve</a>' : null; ?>
                 </div>
 
@@ -77,7 +77,7 @@
                                         <div class="col-md-6 fw-bolder text-start">{{$progress['date']}}</div>
                                     </div>
                                     <div class="row my-2">
-                                        <div class="col-md-6 text-start">Comment:</div>
+                                        <div class="col-md-6 text-start">Description:</div>
                                         <div class="col-md-6 fw-bolder text-start">{{$progress['comment']}}</div>
                                     </div>
                                     <div class="row my-2">

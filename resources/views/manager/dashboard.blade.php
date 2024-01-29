@@ -30,7 +30,7 @@
                         <td>{{$request['status']}}</td>
                         <td>{{$request['type']}}</td>
                         <td>
-                            <a href="{{"/manager/project/create/".$request['id']}}" class="btn btn-warning">
+                            <a href="{{"/manager/project/create/".$request['id']}}" class="btn btn-primary">
                                 Create Project
                             </a>
                         </td>

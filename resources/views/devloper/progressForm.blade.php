@@ -11,7 +11,7 @@
                     <form action="/developer/add-progress-request" method="post">
                         @csrf
                         <div class="form-group mb-3">
-                            <label for="comment">Comment</label>
+                            <label for="comment">Description</label>
                             <textarea name="comment" cols="30" class="form-control" rows="5">
 
                             </textarea>

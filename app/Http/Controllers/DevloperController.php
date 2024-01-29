@@ -55,6 +55,10 @@ class DevloperController extends Controller
 
         $newProgress->save();
 
+        $project = Project::where('id', $request->id)->first();
+        $project->status = $request->status;
+        $project->save();
+
         return response()->redirectTo('developer/project/details/'.$request->id);
 
 

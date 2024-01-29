@@ -11,7 +11,7 @@
         </li>
     </ul>
     <div class="container mt-5">
-        <h2>Request List</h2>
+        <h2>Project List</h2>
         <table class="table">
             <thead>
                 <tr>
